@@ -13,24 +13,24 @@ Have Fitur
 - Page Welcome
 ------------------------
 <img src="https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/1.jpeg" width="400" height="790">
+
 - Page Home 
 -----------------------
-![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/2.jpeg?raw=true "Title")
+<img src="https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/2.jpeg" width="400" height="790">
 
 - Page Scanner Barcode
 -------------------------
-![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/3.jpeg?raw=true "Title")
+<img src="https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/3.jpeg" width="400" height="790">
 
 - Page Your Barcode
 ----------------------
-![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/5.jpeg?raw=true "Title")
+<img src="https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/5.jpeg" width="400" height="790">
 
 - Page Found User 
 ----------------------
-![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/4.jpeg?raw=true "Title")
+<img src="https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/4.jpeg" width="400" height="790">
 
 - Page User Profile For logout
 ----------------------
-![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/6.jpeg?raw=true "Title")
-
+<img src="https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/6.jpeg" width="400" height="790">
 
