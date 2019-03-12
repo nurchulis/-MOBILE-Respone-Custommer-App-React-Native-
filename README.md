@@ -12,7 +12,7 @@ Have Fitur
 
 - Page Welcome
 ------------------------
-![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/1.jpeg?raw=true "Title")
+![test image size](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/1.jpeg){:height="500px" width="200px"}
 
 - Page Home 
 -----------------------
