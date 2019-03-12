@@ -8,3 +8,14 @@ Have
 - Simple Routing Page
 
 *Demo*
+
+- Page Welcome
+------------------------
+![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/1.jpeg?raw=true "Title")
+
+- Page Home 
+-----------------------
+![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/2.jpeg?raw=true "Title")
+
+
+
