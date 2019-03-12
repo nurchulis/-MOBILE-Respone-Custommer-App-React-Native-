@@ -11,7 +11,7 @@ Have
 
 - Page Welcome
 ------------------------
-![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/1.jpeg?raw=true "Title")
+![Alt text](https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/1.jpeg?raw=true "Title" | height=400)
 
 - Page Home 
 -----------------------
