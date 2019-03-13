@@ -11,13 +11,13 @@ Have Fitur
 
 User 1 
 --------------------------------
-username : nurchulis
-password : 123456
+- username : nurchulis
+- password : 123456
 
 User 2
 -------------------------------
-username : lina
-password : 123456
+- username : lina
+- password : 123456
 
 *Demo*
 
