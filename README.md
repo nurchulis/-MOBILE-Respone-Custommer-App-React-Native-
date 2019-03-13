@@ -8,6 +8,16 @@ Have Fitur
 - Barcode Scanner
 - Simple Routing Page
 
+
+User 1 
+--------------------------------
+username : nurchulis
+password : 123456
+User 2
+-------------------------------
+username : lina
+password : 123456
+
 *Demo*
 
 - Page Welcome
