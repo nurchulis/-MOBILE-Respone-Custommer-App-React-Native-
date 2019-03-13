@@ -73,7 +73,7 @@ export default class ScanBarcode extends Component {
 				
 			})
 			.catch(e => {
-				alert(JSON.stringify(e))
+				alert("Data barcode Tidak Ditemukan")
 	        this.setState({isBarcodeScannerEnabled:true,show:false})
 			})	
 	}	
