@@ -60,7 +60,7 @@ export default class Home extends Component {
 
   _ScanBarcode = () => {
  
-    this.props.navigation.navigate('ScanBarcode')
+    this.props.navigation.navigate('AddRespone')
   }
 
   render () {
@@ -77,7 +77,7 @@ export default class Home extends Component {
           <Text style={{color:'white',textAlign:'center', fontWeight:'bold', marginTop:10}}>This is simple App, QRscanner For read data and show with Get API</Text>
           </View>
 
-          <Button Icon={<Icon name="camera" size={10} color="white"/>} title="Add Friend" textStyle={{color:'white'}} style={{backgroundColor:'#1abc9c'}} onPress={ this._ScanBarcode }/>
+          <Button Icon={<Icon name="camera" size={10} color="white"/>} title="Tambah Respone" textStyle={{color:'white'}} style={{backgroundColor:'#1abc9c'}} onPress={ this._ScanBarcode }/>
 
           
         </View>

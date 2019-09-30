@@ -1,3 +1,3 @@
-let baseURL = 'http://api-learning.puspidep.org/api/v1/'
+let baseURL = 'http://api-respone.herokuapp.com/api/v1'
 
 export { baseURL }

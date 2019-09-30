@@ -5,7 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import Home from '../views/Home'
 import ListFriend from '../views/ListFriend'
 import Profile from '../views/Profile'
-import ScanBarcode from '../views/ScanBarcode'
+import AddRespone from '../views/AddRespone'
 import userFound from '../views/userFound'
 
 const NavBottomTabStaff = createBottomTabNavigator(
@@ -78,8 +78,8 @@ const NavHome = createStackNavigator({
     },
   },
 
-  ScanBarcode: {
-    screen: ScanBarcode
+  AddRespone: {
+    screen: AddRespone
   },
   userFound: {
     screen: userFound

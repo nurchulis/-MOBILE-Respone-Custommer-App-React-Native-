@@ -66,33 +66,45 @@ export default class Login extends Component {
 	_home = () => {
 		this.props.navigation.navigate('NavHome')
 	}
+	_registration = () => {
+		this.props.navigation.navigate('Register')
+	}
 
 
-	_getDataUser (user) {
-		api.get('user/'+user)
+	_getDataUser (id_user, token) {
+		alert(token)
+		const iniToken = 'Bearer '+token
+		let config = {
+	      headers: {
+	       'Authorization': iniToken
+	      }
+	    }
+
+		api.get('User/'+id_user, config)
 			.then(response => {
 				let responseData = response.data
 				if (responseData.success === 'true'){
 					if(data.storeData('Getname',responseData.username)){
 					if(data.storeData('Getemail',responseData.email)){
-						if(data.storeData('Getavatar',responseData.avatar)){	
-						alert('Selamat Datang ID : '+response.data.username)
-						this._home(user)
+						if(data.storeData('Getavatar',responseData.kantor)){	
+						alert('Selamat Datang ID : '+response.data.kantor)
+						this._home()
 					}
 				   }	
-				  } 
+				  } 	
 				}
 			})
 			.catch(e => {
+				
 				alert(JSON.stringify(e))
 			})	
 	}	
 
 
-	async _chooseNav (user) {
-		console.log(await data.storeData('user',user))
-		if(await data.storeData('user',user)){
-			this._getDataUser(user)
+	async _chooseNav (id_user, token) {
+		console.log(await data.storeData('user',id_user))
+		if(await data.storeData('user',id_user)){
+			this._getDataUser(id_user, token)
 		} else {
 			alert("error aplication!")
 		}
@@ -102,13 +114,15 @@ export default class Login extends Component {
 	_auth () {
 		this.setState({isLoading:!this.state.isLoading, error:!this.state.error})
 		Keyboard.dismiss()
-		api.post('auth',this.state)
+		api.post('login',this.state)
 			.then(response => {
 				let responseData = response.data
-				if (responseData.success === 'true'){
-					let user = responseData.id_user
-					this._chooseNav(user)
-				} else if(responseData.success === 'false')
+				if (responseData.message !== 'Wrong credentials'){
+					let id_user = responseData.id_user
+					let token = responseData.access_token
+					this._chooseNav(id_user, token)
+					//alert(JSON.stringify(responseData))
+				} else if(responseData.message === 'Wrong credentials')
 				{
 				this.setState({isLoading:!this.state.isLoading, error:!this.state.error})
 					alert('Email Or password Salah')
