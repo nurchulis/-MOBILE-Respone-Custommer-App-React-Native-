@@ -7,36 +7,36 @@
  */
 
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Dimensions,ScrollView, StatusBar,FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Dimensions,  ImageBackground,ScrollView, StatusBar,FlatList, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import Image from 'react-native-scalable-image'
 import api from '../api'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import Button from '../components/Button'
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Data from '../module/data'
 import homea from '../static/wall.png'
 
 var {height, width} = Dimensions.get('window')
-
+const DeviceWidth = Dimensions.get('window').width
 export default class Home extends Component {
 
   //config header pencarian
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }) => ( {
       headerTitle: "Beranda",
-      headerTintColor: 'white',
       headerTitleStyle: {
           fontWeight: 'bold',
-          color: 'white',
+          color: 'red',
           fontSize:16
         },
         headerStyle: {
           elevation: 1,
-          backgroundColor: '#04a3e7',
+          color:'red',
+          backgroundColor: 'blue',
           height: 50,
           textAlign: 'center'
 
       },
-    }
+    })
 
     constructor(props) {
       super(props)
@@ -66,22 +66,100 @@ export default class Home extends Component {
   render () {
     return (
       <ScrollView>
-        <View style={styles.container}>
-          <StatusBar backgroundColor="#1abc9c" barStyle="light-content"/>
-          <View style={{width:width-64,padding:24, marginBottom:30, alignItems:'center', height:184, elevation:2,marginTop:16, borderRadius:12,backgroundColor:'#1abc9c'}}>
-          <Image
-               style={{marginVertical:0}}
-                 width={width-100} // height will be calculated automatically
-                 source={homea}
-              />
-          <Text style={{color:'white',textAlign:'center', fontWeight:'bold', marginTop:10}}>This is simple App, QRscanner For read data and show with Get API</Text>
-          </View>
-
-          <Button Icon={<Icon name="camera" size={10} color="white"/>} title="Tambah Respone" textStyle={{color:'white'}} style={{backgroundColor:'#1abc9c'}} onPress={ this._ScanBarcode }/>
-
-          
+      
+ <View style={styles.container}>
+        
+<StatusBar backgroundColor="#3498db"  barStyle = "light-content" />
+        <View style={styles.box1}>
+        <ImageBackground source={require('../static/mendung.png')} style={{width: '100%', height: '100%'}}>
+        <View style={{width: '100%', flexDirection: 'row',alignItems: 'center'}}>
+     <Text style={{width: '100%',textAlign: 'center', color:'white', fontWeight:'bold', marginTop:20}} >Cuaca Cerah</Text>
+</View>
+  </ImageBackground>
         </View>
-      </ScrollView>
+        <View style={styles.box2}>
+          <View style={{backgroundColor:'white', borderRadius:5, width:'80%', height:120,
+          shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+
+elevation: 5,
+          }}>
+        <View style={{paddingLeft:10,paddingBottom:5, paddingTop:5, backgroundColor:'#3498db'}}>
+        <Text style={{fontWeight:'bold',color:'white', fontSize:20}}>Jumlah Respone : 30</Text></View>
+        <View style={{flexDirection:"row", width:'100%', padding:10, alignItems:'center', alignContent:'center', flex:1, alignSelf:'center'}}>
+        <View style={{width:DeviceWidth/3, alignItems: 'center', marginLeft:10, marginRight:20}}>
+        <Button buttonStyle={{backgroundColor:'#ff7979', borderRadius:5, height:60}} icon={<Icon
+      name="plus-square"
+      size={25}
+      color="white"
+    /> }title=" Tambah Respone"/>
+
+        </View>
+
+        <View style={{width:DeviceWidth/3}}>
+        <Button  buttonStyle={{backgroundColor:'#2ecc71', height:60}} 
+  icon={
+    <Icon
+      name="eye"
+      size={25}
+      color="white"
+    />
+  }
+  title=" Lihat Respone"
+/>
+        </View>
+        
+        </View>
+
+        </View>
+        </View>
+        
+        <View style={{marginTop:200, backgroundColor:'white', alignItems:'center'}}>
+            <View style={{backgroundColor:'white',
+            shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+elevation: 5,
+marginBottom:20,
+width:'80%',
+             height:100}}>
+            </View>
+        </View>
+
+        <View style={{backgroundColor:'white', alignItems:'center'}}>
+            <View style={{backgroundColor:'white',
+            shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+elevation: 5,
+marginBottom:20,
+width:'80%',
+             height:100}}>
+            </View>
+        </View>
+
+
+
+
+        
+      </View>
+
+
+</ScrollView>
+
     )
   }
 }
@@ -89,10 +167,28 @@ export default class Home extends Component {
 const styles = StyleSheet.create(
   {
     container: {
-      paddingVertical:8,
       flex: 1,
-      alignItems: 'center',
-      backgroundColor: 'white'
+    },
+    box1: {
+      position: 'absolute',
+      width: '100%',
+      height: 140,
+      backgroundColor: '#3498db'
+    },
+    box2: {
+      position: 'absolute',
+      top: 70,
+      width: '100%',
+      alignItems:'center',
+      height: 120,
+    },
+    box_top:{
+      width:200
+
+    },
+    text: {
+      color: 'white',
+      fontSize: 80
     }
   }
 )

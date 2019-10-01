@@ -42,7 +42,7 @@ export default class Login extends Component {
       	},
       	headerStyle: {
 	        elevation: 1,
-	        backgroundColor: '#1abc9c',
+	        backgroundColor: '#3498db',
 	        height: 50
 	    },
   	}
@@ -104,7 +104,9 @@ export default class Login extends Component {
 	async _chooseNav (id_user, token) {
 		console.log(await data.storeData('user',id_user))
 		if(await data.storeData('user',id_user)){
+			if(await data.storeData('token',token)){
 			this._getDataUser(id_user, token)
+			}
 		} else {
 			alert("error aplication!")
 		}
@@ -167,7 +169,7 @@ export default class Login extends Component {
 													}) 
 												})} 
 						onRef={this.a}
-						label="Email" 
+						label="Username" 
 						errorMessage={ this.state.errorEmail }
 						returnKeyType="next" 
 						onSubmitEditing={() => this.b.current.focus() }/>
@@ -185,9 +187,9 @@ export default class Login extends Component {
 						password={ true }  
 						errorMessage={ this.state.errorPassword }
 						label="Password" />
-					<Text onPress={ this._forgotPassword } style={{color: '#1abc9c', marginBottom:20}}>Lupa kata sandi?</Text>
+					<Text onPress={ this._forgotPassword } style={{color: '#3498db', marginBottom:20}}>Lupa kata sandi?</Text>
 					<Button 
-						style={{backgroundColor:'#1abc9c'}} 
+						style={{backgroundColor:'#3498db'}} 
 						loading={this.state.isLoading} 
 						textStyle={{color:'white'}} 
 						onPress={ this._auth.bind(this) } 

@@ -1,11 +1,11 @@
 import React from 'react'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
 
 import Home from '../views/Home'
 import ListFriend from '../views/ListFriend'
 import Profile from '../views/Profile'
-import AddRespone from '../views/AddRespone'
+import ScanBarcode from '../views/ScanBarcode'
 import userFound from '../views/userFound'
 
 const NavBottomTabStaff = createBottomTabNavigator(
@@ -26,17 +26,18 @@ const NavBottomTabStaff = createBottomTabNavigator(
           } else if (routeName === 'ListFriend') {
             icon = 'list'
           } else if (routeName === 'Profile') {
-            icon = 'nature-people'
+            icon = 'user'
           } 
           // You can return any component that you like here! We usually use an
           // icon component from react-native-vector-icons
           return <Icon name={icon} size={25} color={tintColor} />
         },
-        tabBarLabel: label == 'Home' ? 'Beranda' : label == 'ListFriend' ? 'Undang Teman': 'Profile'
+        tabBarLabel: label == 'Home' ? 'Beranda' : label == 'ListFriend' ? 'Daftar Respon': 'Profile'
       })
     },
+    headerTransparent: true,
     tabBarOptions: {
-      activeTintColor: '#1abc9c',
+      activeTintColor: '#3498db',
       inactiveTintColor: '#cfcfcf',
       showLabel: true,
       labelStyle: {
@@ -59,27 +60,31 @@ const NavHome = createStackNavigator({
     navigationOptions: ({ navigation }) => {
       let routeName = navigation.state.routes[navigation.state.index].routeName
       return ({
-        headerTitle: routeName == 'Home' ? 'Beranda' : routeName == 'ListFriend' ? 'Undang Teman' : 'Pengaturan',
+        headerTitle: routeName == 'Home' ? 'Beranda' : routeName == 'ListFriend' ? 'Daftar Respon' : 'Pengaturan',
         headerTintColor: 'white',
+
         headerTitleStyle: {
           fontWeight: 'bold',
           color: 'white',
-          fontSize:16
-        },
+          fontSize:16,
+      },
         headerRightContainerStyle: {
           marginRight: 8,
         },
+        shadowColor: 'transparent',
+        headerTransparent: true,
         headerStyle: {
-          elevation: 1,
-          backgroundColor: '#1abc9c',
-          height: 50
+          elevation: 0,
+          backgroundColor: 'transparent',
+          height: 50,
+          
         }
       })
     },
   },
 
-  AddRespone: {
-    screen: AddRespone
+  ScanBarcode: {
+    screen: ScanBarcode
   },
   userFound: {
     screen: userFound

@@ -10,6 +10,7 @@ import React, { Component } from 'react'
 import { Text, View, Image, Keyboard, AsyncStorage, ScrollView, PixelRatio, Dimensions, StyleSheet, StatusBar} from 'react-native'
 import { withNavigation } from 'react-navigation'
 import CheckBox from 'react-native-check-box'
+import { Dropdown } from 'react-native-material-dropdown';
 //  import jwtDecode from 'jwt-decode'
 
 //import custom components
@@ -71,7 +72,7 @@ export default class Registration extends Component {
     
 
 	_activation = () => {
-		this.props.navigation.navigate('Activation', {email:this.state.email})	
+		this.props.navigation.navigate('Login')	
     }
     register = (data) => {
         return api.post('registration', data)
@@ -79,7 +80,8 @@ export default class Registration extends Component {
                 let responseData = response.data
                 if (responseData.success === "true"){
                     //return responseData.data
-                    alert('berhasil')
+					alert('berhasil')
+					this._activation()
 	                this.setState({isLoading:!this.state.isLoading, error:!this.state.error})
                 }else{
                     alert('gagal membuat akun')
@@ -118,6 +120,13 @@ export default class Registration extends Component {
 	}
 
 	render() {
+        let data = [{
+            value: 'GM',
+          }, {
+            value: 'Jayantaka',
+          }, {
+            value: 'Orange',
+          }];
 		return (
 			<ScrollView contentContainerStyle={{backgroundColor: 'white'}}>
 				<StatusBar backgroundColor="#0288D1" barStyle="light-content"/>
@@ -165,7 +174,9 @@ export default class Registration extends Component {
 						onRef={this.name}
 						onSubmitEditing={() => this.email.current.focus() }
 						label="Alamat"/>
-					<Input 
+				
+                     <Dropdown
+
 						onChangeText={(text) => this.setState({ 
 													kantor: text, 
 													errorName: validation.validate('kantor', text)
@@ -174,11 +185,10 @@ export default class Registration extends Component {
 														error: this._isError() 
 													}) 
 												})} 
-						errorMessage={ this.state.errorName }
-						returnKeyType="next" 
-						onRef={this.name}
-						onSubmitEditing={() => this.email.current.focus() }
-						label="Kantor"/>
+                        containerStyle={{width:'85%', left:0}}
+                        label='Pilih Kantor'
+                        data={data}
+                        />
 
 					<Input 
 						onChangeText={(text) => this.setState({ 
@@ -236,7 +246,7 @@ export default class Registration extends Component {
 						      	})
 						    }}
 						    isChecked={this.state.term}
-						    rightText={"Saya setuju dengan peraturan dan kebijakan ngantri."}/>
+						    rightText={"Saya setuju dengan peraturan dan kebijakan AppRespone."}/>
 					</View>
 
 					<Button 

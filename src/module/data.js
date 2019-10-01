@@ -8,6 +8,12 @@ getUserId = async () => {
     return user
 }
 
+getToken = async () => {
+  const userToken = await AsyncStorage.getItem('token')
+  let user = userToken
+  return user
+}
+
 storeData = async (key,data) => {
   	try {
     	await AsyncStorage.setItem(key, JSON.stringify(data))
@@ -69,4 +75,4 @@ removeData = async (key) => {
   }
 }
 
-export default { storeData, removeData, getUserId, getProfile,  getName, getEmail, getAvatar, getnameFound, getavaFound }
+export default { storeData, removeData, getUserId, getProfile,getToken,  getName, getEmail, getAvatar, getnameFound, getavaFound }

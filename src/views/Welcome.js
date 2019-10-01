@@ -31,10 +31,10 @@ export default class Welcome extends Component {
 			<View style={styles.container}>
 				<StatusBar backgroundColor="#0288D1" barStyle="light-content"/>
 				<Text style={{fontSize:20, fontWeight:'bold', marginTop:150}}>Selamat datang</Text>
-				<Text style={{marginTop:6, fontWeight:'bold'}}>Simple Add Friends With Barcode Scanner</Text>
+				<Text style={{marginTop:6, fontWeight:'bold'}}>Simple Respone App for your Learn Marketing Strategi</Text>
 				<View style={{potition:'absolute', top:'10%', alignItems: 'center'}}>
-					<Button title="Masuk" textStyle={{color:'white'}} style={{backgroundColor:'#1abc9c'}} onPress={ this._login }/>
-					<Text style={{marginTop: 20}}>Belum punya akun? <Text style={{color:'#1abc9c'}} onPress={this._registration}>Daftar</Text></Text>
+					<Button title="Masuk" textStyle={{color:'white'}} style={{backgroundColor:'#3498db'}} onPress={ this._login }/>
+					<Text style={{marginTop: 20}}>Belum punya akun? <Text style={{color:'#3498db'}} onPress={this._registration}>Daftar</Text></Text>
 				</View>
 			</View>
 		)
