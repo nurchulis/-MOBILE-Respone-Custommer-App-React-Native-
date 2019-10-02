@@ -7,10 +7,9 @@ import ListFriend from '../views/ListFriend'
 import Profile from '../views/Profile'
 import ScanBarcode from '../views/ScanBarcode'
 import userFound from '../views/userFound'
-
+import addRespond from '../views/AddRespone'
 const NavBottomTabStaff = createBottomTabNavigator(
   {
-    Home: Home,
     ListFriend: ListFriend,
     Profile: Profile
   },
@@ -88,6 +87,9 @@ const NavHome = createStackNavigator({
   },
   userFound: {
     screen: userFound
+  },
+  AddRespond:{
+    screen: addRespond
   }
   //ChooseCounter: {
     //screen: ChooseCounter
