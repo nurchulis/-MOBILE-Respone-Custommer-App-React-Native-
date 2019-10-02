@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "native-base": "^2.13.8",
     "react": "16.6.3",
     "react-native": "0.58.6",
     "react-native-camera": "^1.6.4",
+    "react-native-check-box": "^2.1.7",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-modal": "^9.0.0",
     "react-native-qrcode": "^0.2.7",

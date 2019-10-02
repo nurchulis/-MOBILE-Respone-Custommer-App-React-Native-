@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react'
 import { Text, View, Image, Keyboard, AsyncStorage, ScrollView, PixelRatio, Dimensions, StyleSheet, StatusBar} from 'react-native'
+import { Container, DatePicker, Item, Icon, Picker, Badge } from "native-base";
 import { withNavigation } from 'react-navigation'
 import CheckBox from 'react-native-check-box'
 //  import jwtDecode from 'jwt-decode'
@@ -18,16 +19,17 @@ import Button from '../components/Button'
 
 import api from '../api'
 import validation from '../validation'
+import { TextInput } from 'react-native-gesture-handler';
 //import service from '../../service'
 
 //mengambil panjang dan lebar layar
 var {height, width} = Dimensions.get('window');
 
-export default class Registration extends Component {
+export default class FormRespon extends Component {
 
 	//config header pencarian
 	static navigationOptions = {
-    	headerTitle: "Daftar",
+    	headerTitle: "Form Respon",
     	headerTintColor: 'white',
     	headerTitleStyle: {
         	fontWeight: 'bold',
@@ -41,7 +43,7 @@ export default class Registration extends Component {
 	    },
   	}
 
-	constructor(props) {
+	  constructor(props) {
 	    super(props)
 	    this.email = React.createRef()
 	    this.name = React.createRef()
@@ -60,9 +62,53 @@ export default class Registration extends Component {
     		isLoading: false,
     		term: false,
     		error: true,
-    		remember:true
-    	}
+			remember:true,
+			selected2: undefined,
+			chosenDate: new Date(),
+		}
+		
+		this.setDate=this.setDate.bind(this)
 	}
+
+	onValueChange2(value: string) {
+		this.setState({
+		  selected2: value
+		});
+	  }
+
+	setDate(newDate) {
+		this.setState({ chosenDate: newDate });
+	}
+	
+
+	// constructor(props) {
+	//     super(props)
+	//     this.nama_konsument = React.createRef()
+	//     this.alamat = React.createRef()
+    // 	this.sumber_respone = React.createRef()
+	// 	this.tgl = React.createRef()
+	// 	this.status = React.createRef()
+	// 	this.minat_lokasi = React.createRef()
+	// 	this.jadwal = React.createRef()
+    // 	this.catatan = React.createRef()
+
+    // 	this.state = { 
+	// 		id_respone:'',
+	// 		id_user:'',
+	// 		nama_konsument:'',
+	// 		alamat:'',
+	// 		sumber_respone:'',
+	// 		tgl:'',
+	// 		catatan:'',
+	// 		status:'',
+	// 		minat_lokasi:'',
+	// 		jadwal:'',
+    // 		isLoading: false,
+    // 		term: false,
+    // 		error: true,
+    // 		remember:true
+    // 	}
+	// }
 
 	//fungsi pindah ke halaman login
 	_login = () => {
@@ -135,7 +181,7 @@ export default class Registration extends Component {
 						returnKeyType="next" 
 						onRef={this.name}
 						onSubmitEditing={() => this.email.current.focus() }
-						label="Nama lengkap"/>
+						label="Nama Konsumen"/>
 
 					<Input
 						onChangeText={(text) => this.setState({ 
@@ -150,37 +196,112 @@ export default class Registration extends Component {
 						onRef={this.email}
 						returnKeyType="next" 
 						onSubmitEditing={() => this.phone.current.focus() } 
-						label="Alamat email"/>
-					<Input 
-						onChangeText={(text) => this.setState({ 
-													alamat: text, 
-													errorName: validation.validate('alamat', text)
-												}, () => { 
-													this.setState({ 
-														error: this._isError() 
-													}) 
-												})} 
-						errorMessage={ this.state.errorName }
-						returnKeyType="next" 
-						onRef={this.name}
-						onSubmitEditing={() => this.email.current.focus() }
-						label="Alamat"/>
-					<Input 
-						onChangeText={(text) => this.setState({ 
-													kantor: text, 
-													errorName: validation.validate('kantor', text)
-												}, () => { 
-													this.setState({ 
-														error: this._isError() 
-													}) 
-												})} 
-						errorMessage={ this.state.errorName }
-						returnKeyType="next" 
-						onRef={this.name}
-						onSubmitEditing={() => this.email.current.focus() }
-						label="Kantor"/>
+						label="Alamat Respon "/>
 
-					<Input 
+						{/* Sumber Respon Dropdown*/}
+
+													
+					<Item picker style={styles.pickerContainer}>
+					<Picker
+						mode="dropdown"
+						iosIcon={<Icon name="arrow-down" />}
+						style={{ width:'100%' }}
+						label="Sumber Respone"
+						placeholderStyle={{ color: "#000000" }}
+						placeholderIconColor="#007aff"
+						selectedValue={this.state.selected2}
+						onValueChange={this.onValueChange2.bind(this)}
+					>
+						<Picker.Item label="OLX" value="key0" />
+						<Picker.Item label="Rumah diJual" value="key1" />
+						<Picker.Item label="Rumah123" value="key2" />
+						<Picker.Item label="Facebook" value="key3" />
+						<Picker.Item label="Instagram" value="key4" />
+						<Picker.Item label="LinkedInd" value="key5" />
+					</Picker>
+					</Item>
+						
+					
+					{/* Tanggal Date Picker */}
+
+				
+					<Item reguler style={styles.dateContainer}>
+					<Text>
+						Tanggal Survei: {this.state.chosenDate.toString().substr(4, 12)}
+						</Text>
+					<DatePicker
+						defaultDate={new Date(2018, 4, 4)}
+						minimumDate={new Date(2018, 1, 1)}
+						maximumDate={new Date(2018, 12, 31)}
+						locale={"en"}
+						timeZoneOffsetInMinutes={undefined}
+						modalTransparent={false}
+						animationType={"fade"}
+						androidMode={"spinner"}
+						placeHolderText="Masukkan Tanggal"
+						textStyle={{ color: "green" }}
+						placeHolderTextStyle={{ color: "#d3d3d3" }}
+						onDateChange={this.setDate}
+						disabled={false}
+						/>
+						
+						</Item>
+
+
+
+						<Input
+						onChangeText={(text) => this.setState({ 
+													email: text, 
+													errorEmail: validation.validate('email', text)
+												}, () => { 
+													this.setState({ 
+														error: this._isError() 
+													}) 
+												})} 
+						errorMessage={ this.state.errorEmail }
+						onRef={this.email}
+						returnKeyType="next" 
+						onSubmitEditing={() => this.phone.current.focus() } 
+						label="Status Respone "/>
+
+
+						<Input
+						onChangeText={(text) => this.setState({ 
+													email: text, 
+													errorEmail: validation.validate('email', text)
+												}, () => { 
+													this.setState({ 
+														error: this._isError() 
+													}) 
+												})} 
+						errorMessage={ this.state.errorEmail }
+						onRef={this.email}
+						returnKeyType="next" 
+						onSubmitEditing={() => this.phone.current.focus() } 
+						label="Minat Lokasi "/>	
+
+						
+						<Input
+						onChangeText={(text) => this.setState({ 
+													email: text, 
+													errorEmail: validation.validate('email', text)
+												}, () => { 
+													this.setState({ 
+														error: this._isError() 
+													}) 
+												})} 
+						errorMessage={ this.state.errorEmail }
+						onRef={this.email}
+						returnKeyType="next" 
+						onSubmitEditing={() => this.phone.current.focus() } 
+						label="Jadwal "/>
+					<View style={styles.textAreaContainer}> 
+					<TextInput 
+						style={styles.textArea}
+						numberOfLines={10}
+						multiline={true}
+						placeholder="Catatan"
+     					placeholderTextColor="grey"
 						onChangeText={(text) => this.setState({ 
 													no_hp: text, 
 													errorPhone: validation.validate('no_hp', text)
@@ -193,62 +314,18 @@ export default class Registration extends Component {
 						onRef={this.phone}
 						returnKeyType="next" 
 						onSubmitEditing={() => this.password.current.focus() } 
-						label="Nomor telepon"/>
-
-					<Input
-						onChangeText={(text) => this.setState({ 
-													password: text, 
-													errorPassword: validation.validate('password', text)
-												}, () => { 
-													this.setState({ 
-														error: this._isError() 
-													}) 
-												})} 
-						errorMessage={ this.state.errorPassword }
-						onRef={this.password}
-						returnKeyType="next" 
-						onSubmitEditing={() => this.repassword.current.focus() } 
-						password={ true }  
-						label="Kata sandi"/>
-
-					<Input
-						onChangeText={(text) => this.setState({ 
-													password_repeat: text, 
-													errorRepeatPassword: validation.validate('password_repeat', text+':::::::'+this.state.password)
-												}, () => { 
-													this.setState({ error: this._isError() 
-													}) 
-												})} 
-						errorMessage={ this.state.errorRepeatPassword }
-						onRef={this.repassword}
-						returnKeyType="done" 
-						password={ true }  
-						label="Ulangi kata sandi"/>
-
-					<View style={ styles.checkbox }>
-						<CheckBox
-						    style={{flex: 1, paddingVertical: 8}}
-						    onClick={()=>{
-						      	this.setState({
-						          	term:!this.state.term
-						      	}, () => {
-						      		this.setState({ error: this._isError() })
-						      	})
-						    }}
-						    isChecked={this.state.term}
-						    rightText={"Saya setuju dengan peraturan dan kebijakan ngantri."}/>
+						label="Catatan"/>
 					</View>
 
+
+				
+
 					<Button 
-						title="Daftar" 
+						title="Simpan" 
 						style={{backgroundColor:'#04a3e7', marginTop:16}} 
 						loading={this.state.isLoading} 
 						textStyle={{color:'white'}}
 						onPress={this._register.bind(this)}/>
-
-					<View style={ styles.footer }>
-						<Text style={ styles.text }>Sudah punya akun?<Text onPress={ this._login } style={{ color: '#04a3e7' }}> Masuk</Text></Text>
-					</View>
 				</View>
 			</ScrollView>
 		)
@@ -272,11 +349,28 @@ const styles = StyleSheet.create(
 		},
 		text: {
 			color: '#070707'
+		},pickerContainer: {
+			flex:1,
+			marginTop:-10,
+			marginRight:35,
+			marginBottom:5,
+			marginLeft:35
+		},dateContainer:{
+			width:'80%',
+			marginTop:10,
+			marginBottom:10
 		},
-		checkbox: {
-			width: (PixelRatio.get() < 1.5) ? width-64 : ( PixelRatio.get() < 2 ) ? width-64 : ( PixelRatio.get() < 3 ) ? width-64 : ( PixelRatio.get() < 3 ) ? width-64 : width-64,
-			flexDirection: 'row',  
-			alignContent: 'flex-start'
+		textAreaContainer: {
+			borderColor:'#dcdde1',
+			borderWidth: 1,
+			padding: 5,
+			marginBottom:20
+		},
+		textArea: {
+			width:280,
+			height:200,
+			textAlignVertical: 'top'
+			
 		}
 	}
 )
