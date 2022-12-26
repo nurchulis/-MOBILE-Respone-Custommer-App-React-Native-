@@ -39,7 +39,7 @@ User 2
 
 - Page Found User 
 ----------------------
-<img src="https://raw.githubusercontent.com/nurchulis/InvateScanBarcode/master/demo/4.jpeg" width="400" height="790">
+
 
 - Page User Profile For logout
 ----------------------
